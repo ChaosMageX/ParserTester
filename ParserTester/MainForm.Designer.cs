@@ -53,6 +53,7 @@
             this.txtRegexResults = new System.Windows.Forms.TextBox();
             this.regexGroupBox = new System.Windows.Forms.GroupBox();
             this.regexSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.chkReadableRegex = new System.Windows.Forms.CheckBox();
             this.grpNumStyles.SuspendLayout();
             this.regexGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regexSplitContainer)).BeginInit();
@@ -263,6 +264,7 @@
             this.txtRegexPattern.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRegexPattern.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegexPattern.Location = new System.Drawing.Point(53, 4);
             this.txtRegexPattern.Multiline = true;
             this.txtRegexPattern.Name = "txtRegexPattern";
@@ -343,11 +345,22 @@
             this.regexSplitContainer.SplitterDistance = 61;
             this.regexSplitContainer.TabIndex = 0;
             // 
+            // chkReadableRegex
+            // 
+            this.chkReadableRegex.AutoSize = true;
+            this.chkReadableRegex.Location = new System.Drawing.Point(205, 209);
+            this.chkReadableRegex.Name = "chkReadableRegex";
+            this.chkReadableRegex.Size = new System.Drawing.Size(72, 17);
+            this.chkReadableRegex.TabIndex = 15;
+            this.chkReadableRegex.Text = "Readable";
+            this.chkReadableRegex.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 236);
+            this.Controls.Add(this.chkReadableRegex);
             this.Controls.Add(this.regexGroupBox);
             this.Controls.Add(this.btnTryRegex);
             this.Controls.Add(this.btnGenRegex);
@@ -402,6 +415,7 @@
         private System.Windows.Forms.TextBox txtRegexResults;
         private System.Windows.Forms.GroupBox regexGroupBox;
         private System.Windows.Forms.SplitContainer regexSplitContainer;
+        private System.Windows.Forms.CheckBox chkReadableRegex;
     }
 }
 
