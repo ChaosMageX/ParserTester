@@ -125,7 +125,7 @@ namespace ParserTester
             CultureInfo cultureInfo = CultureInfo.CurrentCulture;
             if ((mNumStyles & NumberStyles.AllowHexSpecifier) == NumberStyles.None)
             {
-                if (chkParseDec.Checked)
+                if (chkParseAsDec.Checked)
                 {
                     decimal result;
                     if (decimal.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))

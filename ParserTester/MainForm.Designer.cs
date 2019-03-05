@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.grpNumStyles = new System.Windows.Forms.GroupBox();
-            this.chkAllowLeadWhite = new System.Windows.Forms.CheckBox();
-            this.chkAllowTrailWhite = new System.Windows.Forms.CheckBox();
-            this.chkAllowLeadSign = new System.Windows.Forms.CheckBox();
-            this.chkAllowTrailSign = new System.Windows.Forms.CheckBox();
-            this.chkAllowParentheses = new System.Windows.Forms.CheckBox();
-            this.chkAllowDecPoint = new System.Windows.Forms.CheckBox();
-            this.chkAllowThousands = new System.Windows.Forms.CheckBox();
-            this.chkAllowExponent = new System.Windows.Forms.CheckBox();
-            this.chkAllowCurSym = new System.Windows.Forms.CheckBox();
             this.chkAllowHexSpec = new System.Windows.Forms.CheckBox();
+            this.chkAllowCurSym = new System.Windows.Forms.CheckBox();
+            this.chkAllowExponent = new System.Windows.Forms.CheckBox();
+            this.chkAllowThousands = new System.Windows.Forms.CheckBox();
+            this.chkAllowDecPoint = new System.Windows.Forms.CheckBox();
+            this.chkAllowParentheses = new System.Windows.Forms.CheckBox();
+            this.chkAllowTrailSign = new System.Windows.Forms.CheckBox();
+            this.chkAllowLeadSign = new System.Windows.Forms.CheckBox();
+            this.chkAllowTrailWhite = new System.Windows.Forms.CheckBox();
+            this.chkAllowLeadWhite = new System.Windows.Forms.CheckBox();
             this.lblAttempt = new System.Windows.Forms.Label();
             this.txtAttempt = new System.Windows.Forms.TextBox();
             this.lblResult = new System.Windows.Forms.Label();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnTryParse = new System.Windows.Forms.Button();
-            this.chkParseDec = new System.Windows.Forms.CheckBox();
+            this.chkParseAsDec = new System.Windows.Forms.CheckBox();
             this.grpNumStyles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,93 +67,16 @@
             this.grpNumStyles.TabStop = false;
             this.grpNumStyles.Text = "Number Styles";
             // 
-            // chkAllowLeadWhite
+            // chkAllowHexSpec
             // 
-            this.chkAllowLeadWhite.AutoSize = true;
-            this.chkAllowLeadWhite.Location = new System.Drawing.Point(17, 27);
-            this.chkAllowLeadWhite.Name = "chkAllowLeadWhite";
-            this.chkAllowLeadWhite.Size = new System.Drawing.Size(123, 17);
-            this.chkAllowLeadWhite.TabIndex = 0;
-            this.chkAllowLeadWhite.Text = "Allow Leading White";
-            this.chkAllowLeadWhite.UseVisualStyleBackColor = true;
-            this.chkAllowLeadWhite.CheckedChanged += new System.EventHandler(this.chkAllowLeadWhite_CheckedChanged);
-            // 
-            // chkAllowTrailWhite
-            // 
-            this.chkAllowTrailWhite.AutoSize = true;
-            this.chkAllowTrailWhite.Location = new System.Drawing.Point(157, 27);
-            this.chkAllowTrailWhite.Name = "chkAllowTrailWhite";
-            this.chkAllowTrailWhite.Size = new System.Drawing.Size(119, 17);
-            this.chkAllowTrailWhite.TabIndex = 1;
-            this.chkAllowTrailWhite.Text = "Allow Trailing White";
-            this.chkAllowTrailWhite.UseVisualStyleBackColor = true;
-            this.chkAllowTrailWhite.CheckedChanged += new System.EventHandler(this.chkAllowTrailWhite_CheckedChanged);
-            // 
-            // chkAllowLeadSign
-            // 
-            this.chkAllowLeadSign.AutoSize = true;
-            this.chkAllowLeadSign.Location = new System.Drawing.Point(17, 51);
-            this.chkAllowLeadSign.Name = "chkAllowLeadSign";
-            this.chkAllowLeadSign.Size = new System.Drawing.Size(116, 17);
-            this.chkAllowLeadSign.TabIndex = 2;
-            this.chkAllowLeadSign.Text = "Allow Leading Sign";
-            this.chkAllowLeadSign.UseVisualStyleBackColor = true;
-            this.chkAllowLeadSign.CheckedChanged += new System.EventHandler(this.chkAllowLeadSign_CheckedChanged);
-            // 
-            // chkAllowTrailSign
-            // 
-            this.chkAllowTrailSign.AutoSize = true;
-            this.chkAllowTrailSign.Location = new System.Drawing.Point(157, 51);
-            this.chkAllowTrailSign.Name = "chkAllowTrailSign";
-            this.chkAllowTrailSign.Size = new System.Drawing.Size(112, 17);
-            this.chkAllowTrailSign.TabIndex = 3;
-            this.chkAllowTrailSign.Text = "Allow Trailing Sign";
-            this.chkAllowTrailSign.UseVisualStyleBackColor = true;
-            this.chkAllowTrailSign.CheckedChanged += new System.EventHandler(this.chkAllowTrailSign_CheckedChanged);
-            // 
-            // chkAllowParentheses
-            // 
-            this.chkAllowParentheses.AutoSize = true;
-            this.chkAllowParentheses.Location = new System.Drawing.Point(17, 75);
-            this.chkAllowParentheses.Name = "chkAllowParentheses";
-            this.chkAllowParentheses.Size = new System.Drawing.Size(113, 17);
-            this.chkAllowParentheses.TabIndex = 4;
-            this.chkAllowParentheses.Text = "Allow Parentheses";
-            this.chkAllowParentheses.UseVisualStyleBackColor = true;
-            this.chkAllowParentheses.CheckedChanged += new System.EventHandler(this.chkAllowParentheses_CheckedChanged);
-            // 
-            // chkAllowDecPoint
-            // 
-            this.chkAllowDecPoint.AutoSize = true;
-            this.chkAllowDecPoint.Location = new System.Drawing.Point(157, 75);
-            this.chkAllowDecPoint.Name = "chkAllowDecPoint";
-            this.chkAllowDecPoint.Size = new System.Drawing.Size(119, 17);
-            this.chkAllowDecPoint.TabIndex = 5;
-            this.chkAllowDecPoint.Text = "Allow Decimal Point";
-            this.chkAllowDecPoint.UseVisualStyleBackColor = true;
-            this.chkAllowDecPoint.CheckedChanged += new System.EventHandler(this.chkAllowDecPoint_CheckedChanged);
-            // 
-            // chkAllowThousands
-            // 
-            this.chkAllowThousands.AutoSize = true;
-            this.chkAllowThousands.Location = new System.Drawing.Point(17, 99);
-            this.chkAllowThousands.Name = "chkAllowThousands";
-            this.chkAllowThousands.Size = new System.Drawing.Size(107, 17);
-            this.chkAllowThousands.TabIndex = 6;
-            this.chkAllowThousands.Text = "Allow Thousands";
-            this.chkAllowThousands.UseVisualStyleBackColor = true;
-            this.chkAllowThousands.CheckedChanged += new System.EventHandler(this.chkAllowThousands_CheckedChanged);
-            // 
-            // chkAllowExponent
-            // 
-            this.chkAllowExponent.AutoSize = true;
-            this.chkAllowExponent.Location = new System.Drawing.Point(157, 99);
-            this.chkAllowExponent.Name = "chkAllowExponent";
-            this.chkAllowExponent.Size = new System.Drawing.Size(99, 17);
-            this.chkAllowExponent.TabIndex = 7;
-            this.chkAllowExponent.Text = "Allow Exponent";
-            this.chkAllowExponent.UseVisualStyleBackColor = true;
-            this.chkAllowExponent.CheckedChanged += new System.EventHandler(this.chkAllowExponent_CheckedChanged);
+            this.chkAllowHexSpec.AutoSize = true;
+            this.chkAllowHexSpec.Location = new System.Drawing.Point(157, 123);
+            this.chkAllowHexSpec.Name = "chkAllowHexSpec";
+            this.chkAllowHexSpec.Size = new System.Drawing.Size(117, 17);
+            this.chkAllowHexSpec.TabIndex = 9;
+            this.chkAllowHexSpec.Text = "Allow Hex Specifier";
+            this.chkAllowHexSpec.UseVisualStyleBackColor = true;
+            this.chkAllowHexSpec.CheckedChanged += new System.EventHandler(this.chkAllowHexSpec_CheckedChanged);
             // 
             // chkAllowCurSym
             // 
@@ -166,16 +89,93 @@
             this.chkAllowCurSym.UseVisualStyleBackColor = true;
             this.chkAllowCurSym.CheckedChanged += new System.EventHandler(this.chkAllowCurSym_CheckedChanged);
             // 
-            // chkAllowHexSpec
+            // chkAllowExponent
             // 
-            this.chkAllowHexSpec.AutoSize = true;
-            this.chkAllowHexSpec.Location = new System.Drawing.Point(157, 123);
-            this.chkAllowHexSpec.Name = "chkAllowHexSpec";
-            this.chkAllowHexSpec.Size = new System.Drawing.Size(117, 17);
-            this.chkAllowHexSpec.TabIndex = 9;
-            this.chkAllowHexSpec.Text = "Allow Hex Specifier";
-            this.chkAllowHexSpec.UseVisualStyleBackColor = true;
-            this.chkAllowHexSpec.CheckedChanged += new System.EventHandler(this.chkAllowHexSpec_CheckedChanged);
+            this.chkAllowExponent.AutoSize = true;
+            this.chkAllowExponent.Location = new System.Drawing.Point(157, 99);
+            this.chkAllowExponent.Name = "chkAllowExponent";
+            this.chkAllowExponent.Size = new System.Drawing.Size(99, 17);
+            this.chkAllowExponent.TabIndex = 7;
+            this.chkAllowExponent.Text = "Allow Exponent";
+            this.chkAllowExponent.UseVisualStyleBackColor = true;
+            this.chkAllowExponent.CheckedChanged += new System.EventHandler(this.chkAllowExponent_CheckedChanged);
+            // 
+            // chkAllowThousands
+            // 
+            this.chkAllowThousands.AutoSize = true;
+            this.chkAllowThousands.Location = new System.Drawing.Point(17, 99);
+            this.chkAllowThousands.Name = "chkAllowThousands";
+            this.chkAllowThousands.Size = new System.Drawing.Size(107, 17);
+            this.chkAllowThousands.TabIndex = 6;
+            this.chkAllowThousands.Text = "Allow Thousands";
+            this.chkAllowThousands.UseVisualStyleBackColor = true;
+            this.chkAllowThousands.CheckedChanged += new System.EventHandler(this.chkAllowThousands_CheckedChanged);
+            // 
+            // chkAllowDecPoint
+            // 
+            this.chkAllowDecPoint.AutoSize = true;
+            this.chkAllowDecPoint.Location = new System.Drawing.Point(157, 75);
+            this.chkAllowDecPoint.Name = "chkAllowDecPoint";
+            this.chkAllowDecPoint.Size = new System.Drawing.Size(119, 17);
+            this.chkAllowDecPoint.TabIndex = 5;
+            this.chkAllowDecPoint.Text = "Allow Decimal Point";
+            this.chkAllowDecPoint.UseVisualStyleBackColor = true;
+            this.chkAllowDecPoint.CheckedChanged += new System.EventHandler(this.chkAllowDecPoint_CheckedChanged);
+            // 
+            // chkAllowParentheses
+            // 
+            this.chkAllowParentheses.AutoSize = true;
+            this.chkAllowParentheses.Location = new System.Drawing.Point(17, 75);
+            this.chkAllowParentheses.Name = "chkAllowParentheses";
+            this.chkAllowParentheses.Size = new System.Drawing.Size(113, 17);
+            this.chkAllowParentheses.TabIndex = 4;
+            this.chkAllowParentheses.Text = "Allow Parentheses";
+            this.chkAllowParentheses.UseVisualStyleBackColor = true;
+            this.chkAllowParentheses.CheckedChanged += new System.EventHandler(this.chkAllowParentheses_CheckedChanged);
+            // 
+            // chkAllowTrailSign
+            // 
+            this.chkAllowTrailSign.AutoSize = true;
+            this.chkAllowTrailSign.Location = new System.Drawing.Point(157, 51);
+            this.chkAllowTrailSign.Name = "chkAllowTrailSign";
+            this.chkAllowTrailSign.Size = new System.Drawing.Size(112, 17);
+            this.chkAllowTrailSign.TabIndex = 3;
+            this.chkAllowTrailSign.Text = "Allow Trailing Sign";
+            this.chkAllowTrailSign.UseVisualStyleBackColor = true;
+            this.chkAllowTrailSign.CheckedChanged += new System.EventHandler(this.chkAllowTrailSign_CheckedChanged);
+            // 
+            // chkAllowLeadSign
+            // 
+            this.chkAllowLeadSign.AutoSize = true;
+            this.chkAllowLeadSign.Location = new System.Drawing.Point(17, 51);
+            this.chkAllowLeadSign.Name = "chkAllowLeadSign";
+            this.chkAllowLeadSign.Size = new System.Drawing.Size(116, 17);
+            this.chkAllowLeadSign.TabIndex = 2;
+            this.chkAllowLeadSign.Text = "Allow Leading Sign";
+            this.chkAllowLeadSign.UseVisualStyleBackColor = true;
+            this.chkAllowLeadSign.CheckedChanged += new System.EventHandler(this.chkAllowLeadSign_CheckedChanged);
+            // 
+            // chkAllowTrailWhite
+            // 
+            this.chkAllowTrailWhite.AutoSize = true;
+            this.chkAllowTrailWhite.Location = new System.Drawing.Point(157, 27);
+            this.chkAllowTrailWhite.Name = "chkAllowTrailWhite";
+            this.chkAllowTrailWhite.Size = new System.Drawing.Size(119, 17);
+            this.chkAllowTrailWhite.TabIndex = 1;
+            this.chkAllowTrailWhite.Text = "Allow Trailing White";
+            this.chkAllowTrailWhite.UseVisualStyleBackColor = true;
+            this.chkAllowTrailWhite.CheckedChanged += new System.EventHandler(this.chkAllowTrailWhite_CheckedChanged);
+            // 
+            // chkAllowLeadWhite
+            // 
+            this.chkAllowLeadWhite.AutoSize = true;
+            this.chkAllowLeadWhite.Location = new System.Drawing.Point(17, 27);
+            this.chkAllowLeadWhite.Name = "chkAllowLeadWhite";
+            this.chkAllowLeadWhite.Size = new System.Drawing.Size(123, 17);
+            this.chkAllowLeadWhite.TabIndex = 0;
+            this.chkAllowLeadWhite.Text = "Allow Leading White";
+            this.chkAllowLeadWhite.UseVisualStyleBackColor = true;
+            this.chkAllowLeadWhite.CheckedChanged += new System.EventHandler(this.chkAllowLeadWhite_CheckedChanged);
             // 
             // lblAttempt
             // 
@@ -224,24 +224,24 @@
             this.btnTryParse.UseVisualStyleBackColor = true;
             this.btnTryParse.Click += new System.EventHandler(this.btnTryParse_Click);
             // 
-            // chkParseDec
+            // chkParseAsDec
             // 
-            this.chkParseDec.AutoSize = true;
-            this.chkParseDec.Checked = true;
-            this.chkParseDec.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkParseDec.Location = new System.Drawing.Point(93, 180);
-            this.chkParseDec.Name = "chkParseDec";
-            this.chkParseDec.Size = new System.Drawing.Size(94, 17);
-            this.chkParseDec.TabIndex = 6;
-            this.chkParseDec.Text = "Parse Decimal";
-            this.chkParseDec.UseVisualStyleBackColor = true;
+            this.chkParseAsDec.AutoSize = true;
+            this.chkParseAsDec.Checked = true;
+            this.chkParseAsDec.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkParseAsDec.Location = new System.Drawing.Point(93, 180);
+            this.chkParseAsDec.Name = "chkParseAsDec";
+            this.chkParseAsDec.Size = new System.Drawing.Size(109, 17);
+            this.chkParseAsDec.TabIndex = 6;
+            this.chkParseAsDec.Text = "Parse As Decimal";
+            this.chkParseAsDec.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 211);
-            this.Controls.Add(this.chkParseDec);
+            this.Controls.Add(this.chkParseAsDec);
             this.Controls.Add(this.btnTryParse);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.lblResult);
@@ -275,7 +275,7 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button btnTryParse;
-        private System.Windows.Forms.CheckBox chkParseDec;
+        private System.Windows.Forms.CheckBox chkParseAsDec;
     }
 }
 
