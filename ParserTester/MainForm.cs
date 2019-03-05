@@ -96,24 +96,54 @@ namespace ParserTester
         private void chkAllowHexSpec_CheckedChanged(object sender, EventArgs e)
         {
             if (chkAllowHexSpec.Checked)
+            {
                 mNumStyles |= NumberStyles.AllowHexSpecifier;
+                chkAllowLeadSign.Enabled = false;
+                chkAllowTrailSign.Enabled = false;
+                chkAllowParentheses.Enabled = false;
+                chkAllowDecPoint.Enabled = false;
+                chkAllowThousands.Enabled = false;
+                chkAllowExponent.Enabled = false;
+                chkAllowCurSym.Enabled = false;
+            }
             else
+            {
                 mNumStyles &= ~NumberStyles.AllowHexSpecifier;
+                chkAllowLeadSign.Enabled = true;
+                chkAllowTrailSign.Enabled = true;
+                chkAllowParentheses.Enabled = true;
+                chkAllowDecPoint.Enabled = true;
+                chkAllowThousands.Enabled = true;
+                chkAllowExponent.Enabled = true;
+                chkAllowCurSym.Enabled = true;
+            }
         }
         #endregion
 
         private void btnTryParse_Click(object sender, EventArgs e)
         {
             CultureInfo cultureInfo = CultureInfo.CurrentCulture;
-            string numStr = txtAttempt.Text;
-            decimal result;
-            if (decimal.TryParse(numStr, mNumStyles, cultureInfo, out result))
+            if ((mNumStyles & NumberStyles.AllowHexSpecifier) == NumberStyles.None)
             {
-                txtResult.Text = result.ToString(cultureInfo);
+                decimal result;
+                if (decimal.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
+                    txtResult.Text = result.ToString(cultureInfo);
+                else
+                    txtResult.Text = "NaN";
             }
             else
             {
-                txtResult.Text = "NaN";
+                NumberStyles numStyles = NumberStyles.AllowHexSpecifier;
+                if (chkAllowLeadWhite.Checked)
+                    numStyles |= NumberStyles.AllowLeadingWhite;
+                if (chkAllowTrailWhite.Checked)
+                    numStyles |= NumberStyles.AllowTrailingWhite;
+
+                ulong result;
+                if (ulong.TryParse(txtAttempt.Text, numStyles, cultureInfo, out result))
+                    txtResult.Text = result.ToString(cultureInfo);
+                else
+                    txtResult.Text = "NaN";
             }
         }
     }
