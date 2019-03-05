@@ -305,6 +305,7 @@
             this.txtRegexResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRegexResults.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegexResults.Location = new System.Drawing.Point(53, 5);
             this.txtRegexResults.Multiline = true;
             this.txtRegexResults.Name = "txtRegexResults";

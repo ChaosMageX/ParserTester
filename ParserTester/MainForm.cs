@@ -424,10 +424,34 @@ namespace ParserTester
             StringBuilder sb = new StringBuilder();
             foreach (Match match in matches)
             {
+                sb.Append("Match \"");
+                sb.Append(match.Name);
+                sb.Append("\": Index: ");
                 sb.Append(match.Index);
-                sb.Append(": \"");
-                sb.Append(match.Value);
-                sb.Append("\" ");
+                sb.Append(" Length: ");
+                sb.Append(match.Length);
+                sb.Append(" Value: ");
+                sb.AppendLine(match.Value);
+                foreach (Group group in match.Groups)
+                {
+                    sb.Append("  Group \"");
+                    sb.Append(group.Name);
+                    sb.Append("\": Index: ");
+                    sb.Append(group.Index);
+                    sb.Append(" Length: ");
+                    sb.Append(group.Length);
+                    sb.Append(" Value: ");
+                    sb.AppendLine(group.Value);
+                    foreach (Capture capture in group.Captures)
+                    {
+                        sb.Append("    Capture ");
+                        sb.Append(capture.Index);
+                        sb.Append(": Length: ");
+                        sb.Append(capture.Length);
+                        sb.Append(" Value: ");
+                        sb.AppendLine(capture.Value);
+                    }
+                }
             }
             txtRegexResults.Text = sb.ToString();
         }
