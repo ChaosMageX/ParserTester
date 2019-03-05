@@ -44,6 +44,7 @@
             this.lblResult = new System.Windows.Forms.Label();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnTryParse = new System.Windows.Forms.Button();
+            this.chkParseDec = new System.Windows.Forms.CheckBox();
             this.grpNumStyles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,11 +224,24 @@
             this.btnTryParse.UseVisualStyleBackColor = true;
             this.btnTryParse.Click += new System.EventHandler(this.btnTryParse_Click);
             // 
+            // chkParseDec
+            // 
+            this.chkParseDec.AutoSize = true;
+            this.chkParseDec.Checked = true;
+            this.chkParseDec.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkParseDec.Location = new System.Drawing.Point(93, 180);
+            this.chkParseDec.Name = "chkParseDec";
+            this.chkParseDec.Size = new System.Drawing.Size(94, 17);
+            this.chkParseDec.TabIndex = 6;
+            this.chkParseDec.Text = "Parse Decimal";
+            this.chkParseDec.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 211);
+            this.Controls.Add(this.chkParseDec);
             this.Controls.Add(this.btnTryParse);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.lblResult);
@@ -261,6 +275,7 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button btnTryParse;
+        private System.Windows.Forms.CheckBox chkParseDec;
     }
 }
 

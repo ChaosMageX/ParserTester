@@ -125,11 +125,22 @@ namespace ParserTester
             CultureInfo cultureInfo = CultureInfo.CurrentCulture;
             if ((mNumStyles & NumberStyles.AllowHexSpecifier) == NumberStyles.None)
             {
-                decimal result;
-                if (decimal.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
-                    txtResult.Text = result.ToString(cultureInfo);
+                if (chkParseDec.Checked)
+                {
+                    decimal result;
+                    if (decimal.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
+                        txtResult.Text = result.ToString(cultureInfo);
+                    else
+                        txtResult.Text = "NaN";
+                }
                 else
-                    txtResult.Text = "NaN";
+                {
+                    double result;
+                    if (double.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
+                        txtResult.Text = result.ToString(cultureInfo);
+                    else
+                        txtResult.Text = "NaN";
+                }
             }
             else
             {
