@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -156,6 +157,91 @@ namespace ParserTester
                 else
                     txtResult.Text = "NaN";
             }
+        }
+
+        private void btnGenRegex_Click(object sender, EventArgs e)
+        {
+            CultureInfo cultureInfo = CultureInfo.CurrentCulture;
+            txtRegexPattern.Text = GenerateNumberRegex(mNumStyles, cultureInfo);
+        }
+
+        private static string GenerateNumberRegex(NumberStyles style, IFormatProvider provider)
+        {
+
+            StringBuilder regexSB = new StringBuilder();
+            if ((style & NumberStyles.AllowHexSpecifier) != NumberStyles.None)
+            {
+                regexSB.Append("[0-9a-fA-F]+");
+                return regexSB.ToString();
+            }
+            NumberFormatInfo nfi = NumberFormatInfo.GetInstance(provider);
+            string sign = Regex.Escape(nfi.NegativeSign)
+                        + Regex.Escape(nfi.PositiveSign);
+            string decSep = Regex.Escape(nfi.NumberDecimalSeparator);
+            string grpSep = Regex.Escape(nfi.NumberGroupSeparator);
+            string curSym = null;
+            if ((style & NumberStyles.AllowCurrencySymbol) != NumberStyles.None)
+            {
+                decSep += Regex.Escape(nfi.CurrencyDecimalSeparator);
+                grpSep += Regex.Escape(nfi.CurrencyGroupSeparator);
+                curSym = Regex.Escape(nfi.CurrencySymbol);
+            }
+
+            // TODO: Regex for leading sign, currency symbol and parenthesis
+
+            if ((style & NumberStyles.AllowThousands) != NumberStyles.None)
+            {
+                if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
+                {
+                    regexSB.Append("(?:[0-9]+[");
+                    regexSB.Append(grpSep);
+                    regexSB.Append("0-9]*)?[");
+                    regexSB.Append(decSep);
+                    regexSB.Append("]?[0-9]+");
+                }
+                else
+                {
+                    regexSB.Append("[0-9]+[");
+                    regexSB.Append(grpSep);
+                    regexSB.Append("0-9]*");
+                }
+            }
+            else if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
+            {
+                regexSB.Append("[0-9]*[");
+                regexSB.Append(decSep);
+                regexSB.Append("]?[0-9]+");
+            }
+            else
+            {
+                regexSB.Append("[0-9]+");
+            }
+
+            if ((style & NumberStyles.AllowExponent) != NumberStyles.None)
+            {
+                regexSB.Append("(?:[eE][");
+                regexSB.Append(sign);
+                regexSB.Append("]?[0-9]+)?");
+            }
+
+            // TODO: Regex for trailing sign, currency symbol and parenthesis
+
+            return regexSB.ToString();
+        }
+
+        private void btnTryRegex_Click(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(txtRegexPattern.Text);
+            MatchCollection matches = regex.Matches(txtAttempt.Text, 0);
+            StringBuilder sb = new StringBuilder();
+            foreach (Match match in matches)
+            {
+                sb.Append(match.Index);
+                sb.Append(": \"");
+                sb.Append(match.Value);
+                sb.Append("\" ");
+            }
+            txtRegexResults.Text = sb.ToString();
         }
     }
 }

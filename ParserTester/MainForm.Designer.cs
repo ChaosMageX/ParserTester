@@ -45,6 +45,12 @@
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnTryParse = new System.Windows.Forms.Button();
             this.chkParseAsDec = new System.Windows.Forms.CheckBox();
+            this.lblRegexPattern = new System.Windows.Forms.Label();
+            this.txtRegexPattern = new System.Windows.Forms.TextBox();
+            this.btnGenRegex = new System.Windows.Forms.Button();
+            this.btnTryRegex = new System.Windows.Forms.Button();
+            this.lblRegexResults = new System.Windows.Forms.Label();
+            this.txtRegexResults = new System.Windows.Forms.TextBox();
             this.grpNumStyles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,11 +242,74 @@
             this.chkParseAsDec.Text = "Parse As Decimal";
             this.chkParseAsDec.UseVisualStyleBackColor = true;
             // 
+            // lblRegexPattern
+            // 
+            this.lblRegexPattern.AutoSize = true;
+            this.lblRegexPattern.Location = new System.Drawing.Point(318, 83);
+            this.lblRegexPattern.Name = "lblRegexPattern";
+            this.lblRegexPattern.Size = new System.Drawing.Size(78, 13);
+            this.lblRegexPattern.TabIndex = 7;
+            this.lblRegexPattern.Text = "Regex Pattern:";
+            // 
+            // txtRegexPattern
+            // 
+            this.txtRegexPattern.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRegexPattern.Location = new System.Drawing.Point(402, 80);
+            this.txtRegexPattern.Name = "txtRegexPattern";
+            this.txtRegexPattern.Size = new System.Drawing.Size(270, 20);
+            this.txtRegexPattern.TabIndex = 8;
+            // 
+            // btnGenRegex
+            // 
+            this.btnGenRegex.Location = new System.Drawing.Point(206, 176);
+            this.btnGenRegex.Name = "btnGenRegex";
+            this.btnGenRegex.Size = new System.Drawing.Size(106, 23);
+            this.btnGenRegex.TabIndex = 9;
+            this.btnGenRegex.Text = "Generate Regex";
+            this.btnGenRegex.UseVisualStyleBackColor = true;
+            this.btnGenRegex.Click += new System.EventHandler(this.btnGenRegex_Click);
+            // 
+            // btnTryRegex
+            // 
+            this.btnTryRegex.Location = new System.Drawing.Point(321, 176);
+            this.btnTryRegex.Name = "btnTryRegex";
+            this.btnTryRegex.Size = new System.Drawing.Size(75, 23);
+            this.btnTryRegex.TabIndex = 10;
+            this.btnTryRegex.Text = "Try Regex";
+            this.btnTryRegex.UseVisualStyleBackColor = true;
+            this.btnTryRegex.Click += new System.EventHandler(this.btnTryRegex_Click);
+            // 
+            // lblRegexResults
+            // 
+            this.lblRegexResults.AutoSize = true;
+            this.lblRegexResults.Location = new System.Drawing.Point(318, 111);
+            this.lblRegexResults.Name = "lblRegexResults";
+            this.lblRegexResults.Size = new System.Drawing.Size(79, 13);
+            this.lblRegexResults.TabIndex = 12;
+            this.lblRegexResults.Text = "Regex Results:";
+            // 
+            // txtRegexResults
+            // 
+            this.txtRegexResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRegexResults.Location = new System.Drawing.Point(402, 107);
+            this.txtRegexResults.Name = "txtRegexResults";
+            this.txtRegexResults.ReadOnly = true;
+            this.txtRegexResults.Size = new System.Drawing.Size(270, 20);
+            this.txtRegexResults.TabIndex = 13;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 211);
+            this.Controls.Add(this.txtRegexResults);
+            this.Controls.Add(this.lblRegexResults);
+            this.Controls.Add(this.btnTryRegex);
+            this.Controls.Add(this.btnGenRegex);
+            this.Controls.Add(this.txtRegexPattern);
+            this.Controls.Add(this.lblRegexPattern);
             this.Controls.Add(this.chkParseAsDec);
             this.Controls.Add(this.btnTryParse);
             this.Controls.Add(this.txtResult);
@@ -276,6 +345,12 @@
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button btnTryParse;
         private System.Windows.Forms.CheckBox chkParseAsDec;
+        private System.Windows.Forms.Label lblRegexPattern;
+        private System.Windows.Forms.TextBox txtRegexPattern;
+        private System.Windows.Forms.Button btnGenRegex;
+        private System.Windows.Forms.Button btnTryRegex;
+        private System.Windows.Forms.Label lblRegexResults;
+        private System.Windows.Forms.TextBox txtRegexResults;
     }
 }
 
