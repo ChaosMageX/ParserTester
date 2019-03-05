@@ -165,6 +165,13 @@ namespace ParserTester
             txtRegexPattern.Text = GenerateNumberRegex(mNumStyles, cultureInfo);
         }
 
+        private const NumberStyles cHasLeadingSign 
+            = NumberStyles.AllowLeadingSign 
+            | NumberStyles.AllowParentheses;
+        private const NumberStyles cHasTrailingSign
+            = NumberStyles.AllowTrailingSign 
+            | NumberStyles.AllowParentheses;
+
         private static string GenerateNumberRegex(NumberStyles style, IFormatProvider provider)
         {
 
@@ -188,22 +195,53 @@ namespace ParserTester
             }
 
             // TODO: Regex for leading sign, currency symbol and parenthesis
+            if (curSym != null)
+            {
+                regexSB.Append("(?<cur>");
+                regexSB.Append(curSym);
+                regexSB.Append(")?");
+            }
+
+            if ((style & NumberStyles.AllowLeadingSign) != NumberStyles.None)
+            {
+                regexSB.Append("(?:(?<sgn>[");
+                regexSB.Append(sign);
+                regexSB.Append("])");
+                if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                    regexSB.Append("|(?<par>\\()");
+                regexSB.Append(")?");
+            }
+            else if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            {
+                regexSB.Append("(?<par>\\()?");
+            }
+
+            if (curSym != null && (style & cHasLeadingSign) != NumberStyles.None)
+            {
+                regexSB.Append("(?(");
+                regexSB.Append(curSym);
+                regexSB.Append(")(?(cur)(?!)|(?<cur>");
+                regexSB.Append(curSym);
+                regexSB.Append(")))");
+            }
+
+            regexSB.Append("(?<num>");
 
             if ((style & NumberStyles.AllowThousands) != NumberStyles.None)
             {
                 if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
                 {
-                    regexSB.Append("(?:[0-9]+[");
+                    regexSB.Append("(?:[0-9]+[0-9");
                     regexSB.Append(grpSep);
-                    regexSB.Append("0-9]*)?[");
+                    regexSB.Append("]*)?[");
                     regexSB.Append(decSep);
                     regexSB.Append("]?[0-9]+");
                 }
                 else
                 {
-                    regexSB.Append("[0-9]+[");
+                    regexSB.Append("[0-9]+[0-9");
                     regexSB.Append(grpSep);
-                    regexSB.Append("0-9]*");
+                    regexSB.Append("]*");
                 }
             }
             else if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
@@ -224,7 +262,55 @@ namespace ParserTester
                 regexSB.Append("]?[0-9]+)?");
             }
 
+            regexSB.Append(")");
+
             // TODO: Regex for trailing sign, currency symbol and parenthesis
+            if (curSym != null)
+            {
+                regexSB.Append("(?(");
+                regexSB.Append(curSym);
+                regexSB.Append(")(?(cur)(?!)|(?<cur>");
+                regexSB.Append(curSym);
+                regexSB.Append(")))");
+            }
+
+            if ((style & NumberStyles.AllowTrailingSign) != NumberStyles.None)
+            {
+                regexSB.Append("(?:");
+                if ((style & NumberStyles.AllowLeadingSign) != NumberStyles.None)
+                {
+                    regexSB.Append("(?(sgn)(?!)|(?<sgn>[");
+                    regexSB.Append(sign);
+                    regexSB.Append("]))");
+                }
+                else
+                {
+                    regexSB.Append("(?<sgn>[");
+                    regexSB.Append(sign);
+                    regexSB.Append("])");
+                }
+                if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                    regexSB.Append("|(?<-par>\\))");
+                regexSB.Append(")?");
+            }
+            else if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            {
+                regexSB.Append("(?<-par>\\))?");
+            }
+
+            if (curSym != null && (style & cHasTrailingSign) != NumberStyles.None)
+            {
+                regexSB.Append("(?(");
+                regexSB.Append(curSym);
+                regexSB.Append(")(?(cur)(?!)|(?<cur>");
+                regexSB.Append(curSym);
+                regexSB.Append(")))");
+            }
+
+            if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            {
+                regexSB.Append("(?(par)(?!))");
+            }
 
             return regexSB.ToString();
         }
