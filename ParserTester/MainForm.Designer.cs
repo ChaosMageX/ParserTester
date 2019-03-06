@@ -54,12 +54,17 @@
             this.regexGroupBox = new System.Windows.Forms.GroupBox();
             this.regexSplitContainer = new System.Windows.Forms.SplitContainer();
             this.chkReadableRegex = new System.Windows.Forms.CheckBox();
+            this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.grpNumStyles.SuspendLayout();
             this.regexGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regexSplitContainer)).BeginInit();
             this.regexSplitContainer.Panel1.SuspendLayout();
             this.regexSplitContainer.Panel2.SuspendLayout();
             this.regexSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
+            this.mainSplitContainer.Panel2.SuspendLayout();
+            this.mainSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpNumStyles
@@ -74,9 +79,9 @@
             this.grpNumStyles.Controls.Add(this.chkAllowLeadSign);
             this.grpNumStyles.Controls.Add(this.chkAllowTrailWhite);
             this.grpNumStyles.Controls.Add(this.chkAllowLeadWhite);
-            this.grpNumStyles.Location = new System.Drawing.Point(12, 12);
+            this.grpNumStyles.Location = new System.Drawing.Point(3, 3);
             this.grpNumStyles.Name = "grpNumStyles";
-            this.grpNumStyles.Size = new System.Drawing.Size(300, 150);
+            this.grpNumStyles.Size = new System.Drawing.Size(285, 150);
             this.grpNumStyles.TabIndex = 0;
             this.grpNumStyles.TabStop = false;
             this.grpNumStyles.Text = "Number Styles";
@@ -194,7 +199,7 @@
             // lblAttempt
             // 
             this.lblAttempt.AutoSize = true;
-            this.lblAttempt.Location = new System.Drawing.Point(318, 30);
+            this.lblAttempt.Location = new System.Drawing.Point(3, 162);
             this.lblAttempt.Name = "lblAttempt";
             this.lblAttempt.Size = new System.Drawing.Size(46, 13);
             this.lblAttempt.TabIndex = 1;
@@ -202,17 +207,20 @@
             // 
             // txtAttempt
             // 
-            this.txtAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAttempt.Location = new System.Drawing.Point(370, 27);
+            this.txtAttempt.Location = new System.Drawing.Point(55, 159);
+            this.txtAttempt.Multiline = true;
             this.txtAttempt.Name = "txtAttempt";
-            this.txtAttempt.Size = new System.Drawing.Size(302, 20);
+            this.txtAttempt.Size = new System.Drawing.Size(232, 112);
             this.txtAttempt.TabIndex = 2;
             // 
             // lblResult
             // 
+            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(318, 57);
+            this.lblResult.Location = new System.Drawing.Point(9, 280);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(40, 13);
             this.lblResult.TabIndex = 3;
@@ -220,17 +228,18 @@
             // 
             // txtResult
             // 
-            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResult.Location = new System.Drawing.Point(370, 54);
+            this.txtResult.Location = new System.Drawing.Point(55, 277);
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(302, 20);
+            this.txtResult.Size = new System.Drawing.Size(232, 20);
             this.txtResult.TabIndex = 4;
             // 
             // btnTryParse
             // 
-            this.btnTryParse.Location = new System.Drawing.Point(12, 176);
+            this.btnTryParse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTryParse.Location = new System.Drawing.Point(6, 303);
             this.btnTryParse.Name = "btnTryParse";
             this.btnTryParse.Size = new System.Drawing.Size(75, 23);
             this.btnTryParse.TabIndex = 5;
@@ -240,10 +249,11 @@
             // 
             // chkParseAsDec
             // 
+            this.chkParseAsDec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkParseAsDec.AutoSize = true;
             this.chkParseAsDec.Checked = true;
             this.chkParseAsDec.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkParseAsDec.Location = new System.Drawing.Point(93, 180);
+            this.chkParseAsDec.Location = new System.Drawing.Point(87, 307);
             this.chkParseAsDec.Name = "chkParseAsDec";
             this.chkParseAsDec.Size = new System.Drawing.Size(109, 17);
             this.chkParseAsDec.TabIndex = 6;
@@ -268,12 +278,13 @@
             this.txtRegexPattern.Location = new System.Drawing.Point(53, 4);
             this.txtRegexPattern.Multiline = true;
             this.txtRegexPattern.Name = "txtRegexPattern";
-            this.txtRegexPattern.Size = new System.Drawing.Size(289, 53);
+            this.txtRegexPattern.Size = new System.Drawing.Size(422, 160);
             this.txtRegexPattern.TabIndex = 8;
             // 
             // btnGenRegex
             // 
-            this.btnGenRegex.Location = new System.Drawing.Point(93, 205);
+            this.btnGenRegex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGenRegex.Location = new System.Drawing.Point(87, 332);
             this.btnGenRegex.Name = "btnGenRegex";
             this.btnGenRegex.Size = new System.Drawing.Size(106, 23);
             this.btnGenRegex.TabIndex = 9;
@@ -283,7 +294,8 @@
             // 
             // btnTryRegex
             // 
-            this.btnTryRegex.Location = new System.Drawing.Point(12, 205);
+            this.btnTryRegex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTryRegex.Location = new System.Drawing.Point(6, 332);
             this.btnTryRegex.Name = "btnTryRegex";
             this.btnTryRegex.Size = new System.Drawing.Size(75, 23);
             this.btnTryRegex.TabIndex = 10;
@@ -310,7 +322,7 @@
             this.txtRegexResults.Multiline = true;
             this.txtRegexResults.Name = "txtRegexResults";
             this.txtRegexResults.ReadOnly = true;
-            this.txtRegexResults.Size = new System.Drawing.Size(289, 49);
+            this.txtRegexResults.Size = new System.Drawing.Size(422, 156);
             this.txtRegexResults.TabIndex = 13;
             // 
             // regexGroupBox
@@ -319,9 +331,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.regexGroupBox.Controls.Add(this.regexSplitContainer);
-            this.regexGroupBox.Location = new System.Drawing.Point(321, 80);
+            this.regexGroupBox.Location = new System.Drawing.Point(3, 3);
             this.regexGroupBox.Name = "regexGroupBox";
-            this.regexGroupBox.Size = new System.Drawing.Size(351, 141);
+            this.regexGroupBox.Size = new System.Drawing.Size(484, 355);
             this.regexGroupBox.TabIndex = 14;
             this.regexGroupBox.TabStop = false;
             this.regexGroupBox.Text = "Regex";
@@ -342,37 +354,54 @@
             // 
             this.regexSplitContainer.Panel2.Controls.Add(this.lblRegexResults);
             this.regexSplitContainer.Panel2.Controls.Add(this.txtRegexResults);
-            this.regexSplitContainer.Size = new System.Drawing.Size(345, 122);
-            this.regexSplitContainer.SplitterDistance = 61;
+            this.regexSplitContainer.Size = new System.Drawing.Size(478, 336);
+            this.regexSplitContainer.SplitterDistance = 168;
             this.regexSplitContainer.TabIndex = 0;
             // 
             // chkReadableRegex
             // 
+            this.chkReadableRegex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkReadableRegex.AutoSize = true;
-            this.chkReadableRegex.Location = new System.Drawing.Point(205, 209);
+            this.chkReadableRegex.Location = new System.Drawing.Point(200, 335);
             this.chkReadableRegex.Name = "chkReadableRegex";
             this.chkReadableRegex.Size = new System.Drawing.Size(72, 17);
             this.chkReadableRegex.TabIndex = 15;
             this.chkReadableRegex.Text = "Readable";
             this.chkReadableRegex.UseVisualStyleBackColor = true;
             // 
+            // mainSplitContainer
+            // 
+            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitContainer.Name = "mainSplitContainer";
+            // 
+            // mainSplitContainer.Panel1
+            // 
+            this.mainSplitContainer.Panel1.Controls.Add(this.grpNumStyles);
+            this.mainSplitContainer.Panel1.Controls.Add(this.lblResult);
+            this.mainSplitContainer.Panel1.Controls.Add(this.txtResult);
+            this.mainSplitContainer.Panel1.Controls.Add(this.chkParseAsDec);
+            this.mainSplitContainer.Panel1.Controls.Add(this.chkReadableRegex);
+            this.mainSplitContainer.Panel1.Controls.Add(this.btnTryParse);
+            this.mainSplitContainer.Panel1.Controls.Add(this.txtAttempt);
+            this.mainSplitContainer.Panel1.Controls.Add(this.btnGenRegex);
+            this.mainSplitContainer.Panel1.Controls.Add(this.btnTryRegex);
+            this.mainSplitContainer.Panel1.Controls.Add(this.lblAttempt);
+            // 
+            // mainSplitContainer.Panel2
+            // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.regexGroupBox);
+            this.mainSplitContainer.Size = new System.Drawing.Size(784, 361);
+            this.mainSplitContainer.SplitterDistance = 290;
+            this.mainSplitContainer.TabIndex = 16;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 236);
-            this.Controls.Add(this.chkReadableRegex);
-            this.Controls.Add(this.regexGroupBox);
-            this.Controls.Add(this.btnTryRegex);
-            this.Controls.Add(this.btnGenRegex);
-            this.Controls.Add(this.chkParseAsDec);
-            this.Controls.Add(this.btnTryParse);
-            this.Controls.Add(this.txtResult);
-            this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.txtAttempt);
-            this.Controls.Add(this.lblAttempt);
-            this.Controls.Add(this.grpNumStyles);
-            this.MinimumSize = new System.Drawing.Size(700, 275);
+            this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.mainSplitContainer);
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "MainForm";
             this.Text = "Parser Tester";
             this.grpNumStyles.ResumeLayout(false);
@@ -384,8 +413,12 @@
             this.regexSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regexSplitContainer)).EndInit();
             this.regexSplitContainer.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.PerformLayout();
+            this.mainSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
+            this.mainSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -417,6 +450,7 @@
         private System.Windows.Forms.GroupBox regexGroupBox;
         private System.Windows.Forms.SplitContainer regexSplitContainer;
         private System.Windows.Forms.CheckBox chkReadableRegex;
+        private System.Windows.Forms.SplitContainer mainSplitContainer;
     }
 }
 
