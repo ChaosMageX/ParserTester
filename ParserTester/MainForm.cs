@@ -171,16 +171,16 @@ namespace ParserTester
                 mNumStyles, cultureInfo, chkReadableRegex.Checked);
         }
 
-        private const NumberStyles cHasLeadingSign 
-            = NumberStyles.AllowLeadingSign 
-            | NumberStyles.AllowParentheses;
-        private const NumberStyles cHasTrailingSign
-            = NumberStyles.AllowTrailingSign 
-            | NumberStyles.AllowParentheses;
-
         private static string GenerateNumberRegex(
             NumberStyles style, IFormatProvider provider, bool humanReadable)
         {
+            const NumberStyles cHasLeadingSign
+                = NumberStyles.AllowLeadingSign
+                | NumberStyles.AllowParentheses;
+            const NumberStyles cHasTrailingSign
+                = NumberStyles.AllowTrailingSign
+                | NumberStyles.AllowParentheses;
+
             int len = 0;
             StringBuilder regexSB = new StringBuilder();
             if ((style & NumberStyles.AllowHexSpecifier) != NumberStyles.None)
