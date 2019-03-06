@@ -213,6 +213,7 @@
             this.txtAttempt.Location = new System.Drawing.Point(55, 159);
             this.txtAttempt.Multiline = true;
             this.txtAttempt.Name = "txtAttempt";
+            this.txtAttempt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAttempt.Size = new System.Drawing.Size(232, 112);
             this.txtAttempt.TabIndex = 2;
             // 
@@ -278,6 +279,7 @@
             this.txtRegexPattern.Location = new System.Drawing.Point(53, 4);
             this.txtRegexPattern.Multiline = true;
             this.txtRegexPattern.Name = "txtRegexPattern";
+            this.txtRegexPattern.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRegexPattern.Size = new System.Drawing.Size(422, 160);
             this.txtRegexPattern.TabIndex = 8;
             // 
@@ -322,6 +324,7 @@
             this.txtRegexResults.Multiline = true;
             this.txtRegexResults.Name = "txtRegexResults";
             this.txtRegexResults.ReadOnly = true;
+            this.txtRegexResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRegexResults.Size = new System.Drawing.Size(422, 156);
             this.txtRegexResults.TabIndex = 13;
             // 
