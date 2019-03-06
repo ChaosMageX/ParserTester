@@ -123,24 +123,29 @@ namespace ParserTester
 
         private void btnTryParse_Click(object sender, EventArgs e)
         {
+            txtResult.Text = Parse(txtAttempt.Text);
+        }
+
+        private string Parse(string text)
+        {
             CultureInfo cultureInfo = CultureInfo.CurrentCulture;
             if ((mNumStyles & NumberStyles.AllowHexSpecifier) == NumberStyles.None)
             {
                 if (chkParseAsDec.Checked)
                 {
                     decimal result;
-                    if (decimal.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
-                        txtResult.Text = result.ToString(cultureInfo);
+                    if (decimal.TryParse(text, mNumStyles, cultureInfo, out result))
+                        return result.ToString(cultureInfo);
                     else
-                        txtResult.Text = "NaN";
+                        return "NaN";
                 }
                 else
                 {
                     double result;
-                    if (double.TryParse(txtAttempt.Text, mNumStyles, cultureInfo, out result))
-                        txtResult.Text = result.ToString(cultureInfo);
+                    if (double.TryParse(text, mNumStyles, cultureInfo, out result))
+                        return result.ToString(cultureInfo);
                     else
-                        txtResult.Text = "NaN";
+                        return "NaN";
                 }
             }
             else
@@ -152,10 +157,10 @@ namespace ParserTester
                     numStyles |= NumberStyles.AllowTrailingWhite;
 
                 ulong result;
-                if (ulong.TryParse(txtAttempt.Text, numStyles, cultureInfo, out result))
-                    txtResult.Text = result.ToString(cultureInfo);
+                if (ulong.TryParse(text, numStyles, cultureInfo, out result))
+                    return result.ToString(cultureInfo);
                 else
-                    txtResult.Text = "NaN";
+                    return "NaN";
             }
         }
 
@@ -430,8 +435,10 @@ namespace ParserTester
                 sb.Append(match.Index);
                 sb.Append(" Length: ");
                 sb.Append(match.Length);
-                sb.Append(" Value: ");
-                sb.AppendLine(match.Value);
+                sb.Append(" Value: \"");
+                sb.Append(match.Value);
+                sb.Append("\" Parsed: ");
+                sb.AppendLine(Parse(match.Value));
                 foreach (Group group in match.Groups)
                 {
                     sb.Append("  Group \"");
