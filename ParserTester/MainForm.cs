@@ -435,9 +435,9 @@ namespace ParserTester
                 sb.Append(match.Index);
                 sb.Append(" Length: ");
                 sb.Append(match.Length);
-                sb.Append(" Value: \"");
+                sb.Append(" Value: ");
                 sb.Append(match.Value);
-                sb.Append("\" Parsed: ");
+                sb.Append(" Parsed: ");
                 sb.AppendLine(Parse(match.Value));
                 foreach (Group group in match.Groups)
                 {
