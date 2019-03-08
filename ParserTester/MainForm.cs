@@ -171,6 +171,11 @@ namespace ParserTester
                 mNumStyles, cultureInfo, chkReadableRegex.Checked);
         }
 
+        private static Dictionary<NumberFormatInfo, 
+            Dictionary<NumberStyles, string>> sGeneratedNumberRegex 
+            = new Dictionary<NumberFormatInfo, 
+                Dictionary<NumberStyles, string>>();
+
         /// <summary>
         /// Generates a regular expression pattern string 
         /// that can be used to find numbers in strings 
@@ -190,7 +195,7 @@ namespace ParserTester
         /// </param>
         /// <param name="humanReadable">
         /// Determines whether the generated regular expression 
-        /// pattern is made human readable with multiple lines 
+        /// pattern is made more verbose with multiple lines 
         /// and comments on each line to explain the function 
         /// of various parts of the generated pattern.
         /// </param>
@@ -217,6 +222,23 @@ namespace ParserTester
                 | NumberStyles.AllowParentheses;
             const int cLW = 45;
 
+            NumberFormatInfo nfi = NumberFormatInfo.GetInstance(provider);
+
+            // TODO: Is extra code needed to make this multi-thread safe?
+            Dictionary<NumberStyles, string> regexStrings = null;
+            if (!humanReadable &&
+                sGeneratedNumberRegex.TryGetValue(nfi, out regexStrings))
+            {
+                string regexStr;
+                if (regexStrings.TryGetValue(style, out regexStr))
+                    return regexStr;
+            }
+            else if (!humanReadable)
+            {
+                regexStrings = new Dictionary<NumberStyles, string>();
+                sGeneratedNumberRegex.Add(nfi, regexStrings);
+            }
+
             int len = 0;
             StringBuilder regexSB = new StringBuilder();
             if ((style & NumberStyles.AllowHexSpecifier) 
@@ -227,7 +249,6 @@ namespace ParserTester
                     regexSB.Append(" # Find Allowable Hex Numbers");
                 return regexSB.ToString();
             }
-            NumberFormatInfo nfi = NumberFormatInfo.GetInstance(provider);
             string sign = Regex.Escape(nfi.NegativeSign)
                         + Regex.Escape(nfi.PositiveSign);
             string decSep = Regex.Escape(nfi.NumberDecimalSeparator);
@@ -477,6 +498,12 @@ namespace ParserTester
                 }
             }
 
+            if (!humanReadable)
+            {
+                string regexStr = regexSB.ToString();
+                regexStrings.Add(style, regexStr);
+                return regexStr;
+            }
             return regexSB.ToString();
         }
 
