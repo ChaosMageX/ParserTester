@@ -215,6 +215,7 @@ namespace ParserTester
             const NumberStyles cHasTrailingSign
                 = NumberStyles.AllowTrailingSign
                 | NumberStyles.AllowParentheses;
+            const int cLW = 45;
 
             int len = 0;
             StringBuilder regexSB = new StringBuilder();
@@ -249,7 +250,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.AppendLine("# Find currency symbol");
                 }
             }
@@ -268,7 +269,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.Append("# Find leading sign");
                     if ((style & NumberStyles.AllowParentheses) 
                         != NumberStyles.None)
@@ -284,7 +285,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.AppendLine("# Find opening parenthesis");
                 }
             }
@@ -301,7 +302,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.Append("# Find currency symbol");
                     regexSB.AppendLine("; Fail if already found");
                 }
@@ -312,7 +313,7 @@ namespace ParserTester
 
             /*if (humanReadable)
             {
-                regexSB.Append(' ', len + 45 - regexSB.Length);
+                regexSB.Append(' ', len + cLW - regexSB.Length);
                 regexSB.AppendLine("# Begin finding numeric part");
             }/* */
 
@@ -349,7 +350,7 @@ namespace ParserTester
             }
             if (humanReadable)
             {
-                regexSB.Append(' ', len + 45 - regexSB.Length);
+                regexSB.Append(' ', len + cLW - regexSB.Length);
                 regexSB.Append("# Find number");
                 if ((style & NumberStyles.AllowDecimalPoint) 
                     != NumberStyles.None)
@@ -367,7 +368,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.AppendLine("# Find exponent");
                 }
             }
@@ -377,7 +378,7 @@ namespace ParserTester
 
             /*if (humanReadable)
             {
-                regexSB.Append(' ', len + 45 - regexSB.Length);
+                regexSB.Append(' ', len + cLW - regexSB.Length);
                 regexSB.AppendLine("# End finding numeric part");
             }/* */
             
@@ -392,7 +393,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.Append("# Find currency symbol");
                     regexSB.AppendLine("; Fail if already found");
                 }
@@ -423,7 +424,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.Append("# Find trailing sign");
                     if ((style & NumberStyles.AllowParentheses) 
                         != NumberStyles.None)
@@ -439,7 +440,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.AppendLine("# Find closing parenthesis");
                 }
             }
@@ -456,7 +457,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.Append("# Find currency symbol");
                     regexSB.AppendLine("; Fail if already found");
                 }
@@ -470,7 +471,7 @@ namespace ParserTester
 
                 if (humanReadable)
                 {
-                    regexSB.Append(' ', len + 45 - regexSB.Length);
+                    regexSB.Append(' ', len + cLW - regexSB.Length);
                     regexSB.AppendLine(
                         "# Fail if parentheses isn't closed");
                 }
