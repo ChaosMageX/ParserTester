@@ -171,8 +171,43 @@ namespace ParserTester
                 mNumStyles, cultureInfo, chkReadableRegex.Checked);
         }
 
-        private static string GenerateNumberRegex(
-            NumberStyles style, IFormatProvider provider, bool humanReadable)
+        /// <summary>
+        /// Generates a regular expression pattern string 
+        /// that can be used to find numbers in strings 
+        /// which are parseable with the given 
+        /// number <paramref name="style"/> flags 
+        /// and format <paramref name="provider"/>.
+        /// </summary>
+        /// <param name="style">
+        /// The same <see cref="NumberStyles"/> flags 
+        /// that will be used to parse numbers found 
+        /// with the generated regular expression pattern.
+        /// </param>
+        /// <param name="provider">
+        /// The same <see cref="IFormatProvider"/> instance 
+        /// that will be used to parse numbers found 
+        /// with the generated regular expression pattern.
+        /// </param>
+        /// <param name="humanReadable">
+        /// Determines whether the generated regular expression 
+        /// pattern is made human readable with multiple lines 
+        /// and comments on each line to explain the function 
+        /// of various parts of the generated pattern.
+        /// </param>
+        /// <returns>
+        /// A regular expression pattern string that can be 
+        /// used to extract parseable numbers from strings.
+        /// </returns>
+        /// <remarks>
+        /// Note that if the <paramref name="humanReadable"/> parameter 
+        /// is set to <see langword="true"/>, you will have to use 
+        /// the <see cref="RegexOptions.IgnorePatternWhitespace"/> flag 
+        /// in order to actually use the generated regular expression 
+        /// pattern string in a <see cref="Regex"/> instance.
+        /// </remarks>
+        public static string GenerateNumberRegex(
+            NumberStyles style, IFormatProvider provider, 
+            bool humanReadable = false)
         {
             const NumberStyles cHasLeadingSign
                 = NumberStyles.AllowLeadingSign
@@ -183,7 +218,8 @@ namespace ParserTester
 
             int len = 0;
             StringBuilder regexSB = new StringBuilder();
-            if ((style & NumberStyles.AllowHexSpecifier) != NumberStyles.None)
+            if ((style & NumberStyles.AllowHexSpecifier) 
+                != NumberStyles.None)
             {
                 regexSB.Append("[0-9a-fA-F]+");
                 if (humanReadable)
@@ -196,7 +232,8 @@ namespace ParserTester
             string decSep = Regex.Escape(nfi.NumberDecimalSeparator);
             string grpSep = Regex.Escape(nfi.NumberGroupSeparator);
             string curSym = null;
-            if ((style & NumberStyles.AllowCurrencySymbol) != NumberStyles.None)
+            if ((style & NumberStyles.AllowCurrencySymbol) 
+                != NumberStyles.None)
             {
                 decSep += Regex.Escape(nfi.CurrencyDecimalSeparator);
                 grpSep += Regex.Escape(nfi.CurrencyGroupSeparator);
@@ -217,13 +254,15 @@ namespace ParserTester
                 }
             }
 
-            if ((style & NumberStyles.AllowLeadingSign) != NumberStyles.None)
+            if ((style & NumberStyles.AllowLeadingSign) 
+                != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?:(?<sgn>[");
                 regexSB.Append(sign);
                 regexSB.Append("])");
-                if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                if ((style & NumberStyles.AllowParentheses) 
+                    != NumberStyles.None)
                     regexSB.Append("|(?<par>\\()");
                 regexSB.Append(")?");
 
@@ -231,12 +270,14 @@ namespace ParserTester
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
                     regexSB.Append("# Find leading sign");
-                    if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                    if ((style & NumberStyles.AllowParentheses) 
+                        != NumberStyles.None)
                         regexSB.Append(" and opening parenthesis");
                     regexSB.AppendLine();
                 }
             }
-            else if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            else if ((style & NumberStyles.AllowParentheses) 
+                     != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?<par>\\()?");
@@ -248,7 +289,8 @@ namespace ParserTester
                 }
             }
 
-            if (curSym != null && (style & cHasLeadingSign) != NumberStyles.None)
+            if (curSym != null && 
+                (style & cHasLeadingSign) != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?(");
@@ -260,23 +302,26 @@ namespace ParserTester
                 if (humanReadable)
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
-                    regexSB.AppendLine("# Find currency symbol; Fail if already found");
+                    regexSB.Append("# Find currency symbol");
+                    regexSB.AppendLine("; Fail if already found");
                 }
             }
 
             len = regexSB.Length;
             regexSB.Append("(?<num>");
 
-            if (humanReadable)
+            /*if (humanReadable)
             {
                 regexSB.Append(' ', len + 45 - regexSB.Length);
                 regexSB.AppendLine("# Begin finding numeric part");
-            }
+            }/* */
 
             len = regexSB.Length;
-            if ((style & NumberStyles.AllowThousands) != NumberStyles.None)
+            if ((style & NumberStyles.AllowThousands) 
+                != NumberStyles.None)
             {
-                if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
+                if ((style & NumberStyles.AllowDecimalPoint) 
+                    != NumberStyles.None)
                 {
                     regexSB.Append("(?:[0-9]+[0-9");
                     regexSB.Append(grpSep);
@@ -291,7 +336,8 @@ namespace ParserTester
                     regexSB.Append("]*");
                 }
             }
-            else if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
+            else if ((style & NumberStyles.AllowDecimalPoint) 
+                     != NumberStyles.None)
             {
                 regexSB.Append("[0-9]*[");
                 regexSB.Append(decSep);
@@ -305,12 +351,14 @@ namespace ParserTester
             {
                 regexSB.Append(' ', len + 45 - regexSB.Length);
                 regexSB.Append("# Find number");
-                if ((style & NumberStyles.AllowDecimalPoint) != NumberStyles.None)
+                if ((style & NumberStyles.AllowDecimalPoint) 
+                    != NumberStyles.None)
                     regexSB.Append(" with decimal");
                 regexSB.AppendLine();
             }
 
-            if ((style & NumberStyles.AllowExponent) != NumberStyles.None)
+            if ((style & NumberStyles.AllowExponent) 
+                != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?:[eE][");
@@ -327,13 +375,12 @@ namespace ParserTester
             len = regexSB.Length;
             regexSB.Append(")");
 
-            if (humanReadable)
+            /*if (humanReadable)
             {
                 regexSB.Append(' ', len + 45 - regexSB.Length);
                 regexSB.AppendLine("# End finding numeric part");
-            }
-
-            // TODO: Regex for trailing sign, currency symbol and parenthesis
+            }/* */
+            
             if (curSym != null)
             {
                 len = regexSB.Length;
@@ -346,15 +393,18 @@ namespace ParserTester
                 if (humanReadable)
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
-                    regexSB.AppendLine("# Find currency symbol; Fail if already found");
+                    regexSB.Append("# Find currency symbol");
+                    regexSB.AppendLine("; Fail if already found");
                 }
             }
 
-            if ((style & NumberStyles.AllowTrailingSign) != NumberStyles.None)
+            if ((style & NumberStyles.AllowTrailingSign) 
+                != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?:");
-                if ((style & NumberStyles.AllowLeadingSign) != NumberStyles.None)
+                if ((style & NumberStyles.AllowLeadingSign) 
+                    != NumberStyles.None)
                 {
                     regexSB.Append("(?(sgn)(?!)|(?<sgn>[");
                     regexSB.Append(sign);
@@ -366,7 +416,8 @@ namespace ParserTester
                     regexSB.Append(sign);
                     regexSB.Append("])");
                 }
-                if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                if ((style & NumberStyles.AllowParentheses) 
+                    != NumberStyles.None)
                     regexSB.Append("|(?<-par>\\))");
                 regexSB.Append(")?");
 
@@ -374,12 +425,14 @@ namespace ParserTester
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
                     regexSB.Append("# Find trailing sign");
-                    if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+                    if ((style & NumberStyles.AllowParentheses) 
+                        != NumberStyles.None)
                         regexSB.Append(" and closing parenthesis");
                     regexSB.AppendLine();
                 }
             }
-            else if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            else if ((style & NumberStyles.AllowParentheses) 
+                     != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?<-par>\\))?");
@@ -391,7 +444,8 @@ namespace ParserTester
                 }
             }
 
-            if (curSym != null && (style & cHasTrailingSign) != NumberStyles.None)
+            if (curSym != null && 
+                (style & cHasTrailingSign) != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?(");
@@ -403,11 +457,13 @@ namespace ParserTester
                 if (humanReadable)
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
-                    regexSB.AppendLine("# Find currency symbol; Fail if already found");
+                    regexSB.Append("# Find currency symbol");
+                    regexSB.AppendLine("; Fail if already found");
                 }
             }
 
-            if ((style & NumberStyles.AllowParentheses) != NumberStyles.None)
+            if ((style & NumberStyles.AllowParentheses) 
+                != NumberStyles.None)
             {
                 len = regexSB.Length;
                 regexSB.Append("(?(par)(?!))");
@@ -415,7 +471,8 @@ namespace ParserTester
                 if (humanReadable)
                 {
                     regexSB.Append(' ', len + 45 - regexSB.Length);
-                    regexSB.AppendLine("# Fail if parentheses isn't closed");
+                    regexSB.AppendLine(
+                        "# Fail if parentheses isn't closed");
                 }
             }
 
@@ -424,7 +481,8 @@ namespace ParserTester
 
         private void btnTryRegex_Click(object sender, EventArgs e)
         {
-            Regex regex = new Regex(txtRegexPattern.Text, RegexOptions.IgnorePatternWhitespace);
+            Regex regex = new Regex(txtRegexPattern.Text, 
+                RegexOptions.IgnorePatternWhitespace);
             MatchCollection matches = regex.Matches(txtAttempt.Text, 0);
             StringBuilder sb = new StringBuilder();
             foreach (Match match in matches)
