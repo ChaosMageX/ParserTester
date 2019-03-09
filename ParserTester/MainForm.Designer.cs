@@ -55,6 +55,7 @@
             this.regexSplitContainer = new System.Windows.Forms.SplitContainer();
             this.chkReadableRegex = new System.Windows.Forms.CheckBox();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.chkIncludeNaNs = new System.Windows.Forms.CheckBox();
             this.grpNumStyles.SuspendLayout();
             this.regexGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regexSplitContainer)).BeginInit();
@@ -214,7 +215,7 @@
             this.txtAttempt.Multiline = true;
             this.txtAttempt.Name = "txtAttempt";
             this.txtAttempt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAttempt.Size = new System.Drawing.Size(232, 112);
+            this.txtAttempt.Size = new System.Drawing.Size(237, 112);
             this.txtAttempt.TabIndex = 2;
             // 
             // lblResult
@@ -234,7 +235,7 @@
             this.txtResult.Location = new System.Drawing.Point(55, 277);
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(232, 20);
+            this.txtResult.Size = new System.Drawing.Size(237, 20);
             this.txtResult.TabIndex = 4;
             // 
             // btnTryParse
@@ -280,7 +281,7 @@
             this.txtRegexPattern.Multiline = true;
             this.txtRegexPattern.Name = "txtRegexPattern";
             this.txtRegexPattern.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRegexPattern.Size = new System.Drawing.Size(422, 160);
+            this.txtRegexPattern.Size = new System.Drawing.Size(417, 160);
             this.txtRegexPattern.TabIndex = 8;
             // 
             // btnGenRegex
@@ -325,7 +326,7 @@
             this.txtRegexResults.Name = "txtRegexResults";
             this.txtRegexResults.ReadOnly = true;
             this.txtRegexResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRegexResults.Size = new System.Drawing.Size(422, 156);
+            this.txtRegexResults.Size = new System.Drawing.Size(417, 156);
             this.txtRegexResults.TabIndex = 13;
             // 
             // regexGroupBox
@@ -336,7 +337,7 @@
             this.regexGroupBox.Controls.Add(this.regexSplitContainer);
             this.regexGroupBox.Location = new System.Drawing.Point(3, 3);
             this.regexGroupBox.Name = "regexGroupBox";
-            this.regexGroupBox.Size = new System.Drawing.Size(484, 355);
+            this.regexGroupBox.Size = new System.Drawing.Size(479, 355);
             this.regexGroupBox.TabIndex = 14;
             this.regexGroupBox.TabStop = false;
             this.regexGroupBox.Text = "Regex";
@@ -357,7 +358,7 @@
             // 
             this.regexSplitContainer.Panel2.Controls.Add(this.lblRegexResults);
             this.regexSplitContainer.Panel2.Controls.Add(this.txtRegexResults);
-            this.regexSplitContainer.Size = new System.Drawing.Size(478, 336);
+            this.regexSplitContainer.Size = new System.Drawing.Size(473, 336);
             this.regexSplitContainer.SplitterDistance = 168;
             this.regexSplitContainer.TabIndex = 0;
             // 
@@ -380,6 +381,7 @@
             // 
             // mainSplitContainer.Panel1
             // 
+            this.mainSplitContainer.Panel1.Controls.Add(this.chkIncludeNaNs);
             this.mainSplitContainer.Panel1.Controls.Add(this.grpNumStyles);
             this.mainSplitContainer.Panel1.Controls.Add(this.lblResult);
             this.mainSplitContainer.Panel1.Controls.Add(this.txtResult);
@@ -395,8 +397,19 @@
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.regexGroupBox);
             this.mainSplitContainer.Size = new System.Drawing.Size(784, 361);
-            this.mainSplitContainer.SplitterDistance = 290;
+            this.mainSplitContainer.SplitterDistance = 295;
             this.mainSplitContainer.TabIndex = 16;
+            // 
+            // chkIncludeNaNs
+            // 
+            this.chkIncludeNaNs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkIncludeNaNs.AutoSize = true;
+            this.chkIncludeNaNs.Location = new System.Drawing.Point(200, 307);
+            this.chkIncludeNaNs.Name = "chkIncludeNaNs";
+            this.chkIncludeNaNs.Size = new System.Drawing.Size(91, 17);
+            this.chkIncludeNaNs.TabIndex = 16;
+            this.chkIncludeNaNs.Text = "Include NaNs";
+            this.chkIncludeNaNs.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -454,6 +467,7 @@
         private System.Windows.Forms.SplitContainer regexSplitContainer;
         private System.Windows.Forms.CheckBox chkReadableRegex;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
+        private System.Windows.Forms.CheckBox chkIncludeNaNs;
     }
 }
 
